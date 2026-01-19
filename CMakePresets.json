@@ -1,0 +1,15 @@
+{
+  "version": 3,
+  "configurePresets": [
+    {
+      "name": "vs-debug",
+      "displayName": "VS Debug (vcpkg)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/out/build/vs-debug",
+      "cacheVariables": {
+        "CMAKE_CXX_STANDARD": "20",
+        "CMAKE_TOOLCHAIN_FILE": "C:/Users/grasi/Desktop/vcpkg/scripts/buildsystems/vcpkg.cmake"
+      }
+    }
+  ]
+}
