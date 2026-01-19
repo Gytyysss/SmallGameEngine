@@ -1,3 +1,0 @@
-C:/Users/grasi/Desktop/TinyEngine/build/CMakeFiles/TinyEngine.dir
-C:/Users/grasi/Desktop/TinyEngine/build/CMakeFiles/ALL_BUILD.dir
-C:/Users/grasi/Desktop/TinyEngine/build/CMakeFiles/ZERO_CHECK.dir
