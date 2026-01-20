@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 
 class Window;
 
@@ -6,11 +7,11 @@ class Application
 {
 public:
     Application();
-    ~Application();
+    ~Application() = default;
 
     void Run();
 
 private:
-    Window* m_Window = nullptr;
+    std::unique_ptr<Window> m_Window;
     bool m_Running = true;
 };
