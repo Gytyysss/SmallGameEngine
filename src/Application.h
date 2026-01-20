@@ -12,6 +12,10 @@ public:
     void Run();
 
 private:
+    void Update(double dt);
+    void Render();
+
+private:
     std::unique_ptr<Window> m_Window;
     bool m_Running = true;
 };

@@ -1,8 +1,10 @@
+#include <glad/glad.h>      
+#include <GLFW/glfw3.h>     
 #include "Application.h"
 #include "Window.h"
-#include "Time.h"
-#include <GLFW/glfw3.h>
+#include "EngineTime.h"
 #include <iostream>
+
 
 Application::Application()
 {
@@ -17,18 +19,28 @@ void Application::Run()
 
     while (m_Running && m_Window && !m_Window->ShouldClose())
     {
-        double raw_dt = Time::Tick();
-        double dt = raw_dt;
+        double dt = Time::Tick();
+        if (dt > 0.1) dt = 0.1;
 
-        if (dt > 0.1) 
-            dt = 0.1; //100 milliseconds clamp if delta time exceeds it
-
-        if (glfwGetKey(m_Window->Native(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
-            m_Running = false;
-
-
-
-        m_Window->PollEvents();
-        m_Window->SwapBuffers();
+        Update(dt);
+        Render();
     }
 }
+void Application::Update(double dt)
+{
+    (void)dt;
+
+    if (glfwGetKey(m_Window->Native(), GLFW_KEY_ESCAPE) == GLFW_PRESS)
+        m_Running = false;
+
+    m_Window->PollEvents();
+}
+
+void Application::Render()
+{
+    glClearColor(0.1f, 0.12f, 0.2f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+
+    m_Window->SwapBuffers();
+}
+

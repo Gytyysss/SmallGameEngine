@@ -1,6 +1,9 @@
 #include "Window.h"
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+
+
 
 // GLFW calls this when it encounters an internal error.
 static void GlfwErrorCallback(int error, const char* description)
@@ -25,7 +28,16 @@ Window::Window(int width, int height, const char* title)
     }
 
     glfwMakeContextCurrent(m_Handle);
+    if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
+        std::cout << "Failed to init GLAD\n";
+        glfwDestroyWindow(m_Handle);
+        m_Handle = nullptr;
+        glfwTerminate();
+        return;
+    }
+
     glfwSwapInterval(1); // VSync ON: limits FPS to monitor refresh, reduces tearing
+
 }
 
 Window::~Window()
