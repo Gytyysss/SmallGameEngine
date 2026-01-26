@@ -1,14 +1,13 @@
 #pragma once
-#include <memory>
 
-class Window;
+#include <memory>
+#include "Systems/EngineCore.h"
 
 class Application
 {
 public:
     Application();
     ~Application();
-
     void Run();
 
 private:
@@ -16,6 +15,8 @@ private:
     void Render();
 
 private:
-    std::unique_ptr<Window> m_Window;
     bool m_Running = true;
+
+    EngineCore m_Engine;
+
 };

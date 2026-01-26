@@ -1,4 +1,4 @@
-#include "Window.h"
+#include "Systems/WindowHandling/Window.h"
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
@@ -51,4 +51,8 @@ Window::~Window()
 void Window::PollEvents() { glfwPollEvents(); }
 void Window::SwapBuffers() { glfwSwapBuffers(m_Handle); }
 bool Window::ShouldClose() const { return glfwWindowShouldClose(m_Handle); }
-GLFWwindow* Window::Native() const { return m_Handle; }
+
+GLFWwindow* Window::Native() const 
+{ 
+    return m_Handle; 
+}
